@@ -49,11 +49,13 @@ if (Test-Path -path $env:LOCALAPPDATA\slack) {
     Write-Host "Making a Backup of Slack Directory" -ForegroundColor Green
     Write-Host "Copying Files Please be Patient" -ForegroundColor Green
     Copy-Item $env:LOCALAPPDATA\slack -Destination $env:LOCALAPPDATA\slack-backup -Recurse
-    Write-Host "Back up can be found here:" $env:LOCALAPPDATA\slack-backup- -ForegroundColor Green
+    Write-Host "Back up can be found here:" $env:LOCALAPPDATA\slack-backup -ForegroundColor Green
 
     $a = Read-Host "Enter the verison of Slack you're on (Open Slack -> Help -> About Slack, example: 4.0.0) "
     $b = "4.0.0"
     
+    $cssurl = Read-Host "Enter a exact path of http url or an exact path on file system."
+
     if ([version]('{0}.{1}.{2}' -f $a.split('.')) -ge [version]('{0}.{1}.{2}' -f $b.split('.'))) {
         Write-Host "Installing Slack Theme to version" $a -ForegroundColor Green
         Set-Location "$env:LOCALAPPDATA\slack\app-$a\resources"
@@ -81,7 +83,7 @@ if (Test-Path -path $env:LOCALAPPDATA\slack) {
         Set-Location "$env:LOCALAPPDATA\slack\app-$a\resources\app.asar.unpacked\src\static"
         Add-Content .\ssb-interop.js "`ndocument.addEventListener('DOMContentLoaded', function() {
             // Fetch our CSS in parallel ahead of time
-            const cssPath = '"$cssurl"';
+            const cssPath = '$cssurl';
             let cssPromise = fetch(cssPath).then((response) => response.text());
                // Insert a style tag into the wrapper view
             cssPromise.then((css) => {
