@@ -1,4 +1,8 @@
-# Windows Install
+# Slack Custom Theme
+
+I've come across a lot of custom themes for slack that are Mac/linux only. This is powershell script will ease the installation of any custom theme. You can use any theme that you would like, local or even through a url from the web. When prompted just enter exact url or file path to your css file (theme).
+
+## Prerequisites
 
 1. Please have [NodeJS](https://nodejs.org/en/download/) Installed.
 
@@ -38,6 +42,6 @@ Install for asar@latest failed with code 1"
 
 Please enter this: `npm config set cache C:\tmp\nodejs\npm-cache --global` -- [Origin](https://github.com/zkat/npx/issues/146#issuecomment-384016791)
 
-# Contributors
+## Contributors
 
 [benjamhooper](https://github.com/benjamhooper/) - Maintainer & Designer
